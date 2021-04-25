@@ -13,6 +13,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -55,16 +56,19 @@ const Login = () => {
     e.preventDefault();
     console.log(formData);
 
-    axiosInstance
+    axios
       .post(`token/`, {
         email: formData.email,
         password: formData.password,
       })
       .then((res) => {
-        localStorage.setItem("access_token", res.data.access);
+        localStorage.setItem('access_token', res.data.access);
         localStorage.setItem("refresh_token", res.data.refresh);
-        axiosInstance.defaults.headers["Authorization"] =
-          "JWT " + localStorage.getItem("access_token");
+        axios.defaults.headers.Authorization = `JWT ${localStorage.getItem(
+            "access_token"
+          )}`;
+      
+      
         history.push("/");
         //console.log(res);
         //console.log(res.data);
