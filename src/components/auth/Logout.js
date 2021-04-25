@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {useHistory} from "react-router-dom"
-import axiosInstance  from "../axios"
+import axiosInstance  from "../../axios"
 
 const Logout = () => {
     const history = useHistory();

@@ -9,11 +9,16 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Logout from "./components/Logout";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import Logout from "./components/auth/Logout";
 import Single from "./components/Single";
 import Search from "./components/Search";
+import Admin from "./Admin"
+import Create from "./components/admin/Create"
+import Edit from "./components/admin/Edit"
+import Delete from "./components/admin/Delete"
+import Posts from "./components/admin/Posts"
 
 axios.defaults.baseURL = "http://localhost:8000/api/";
 axios.defaults.headers.Authorization = `Bearer ${localStorage.getItem(
@@ -26,6 +31,12 @@ const routing = (
       <Header />
       <Switch>
         <Route exact path="/" component={App} />
+
+        <Route exact path="/admin" component={Admin} />
+        <Route exact path="/admin/create" component={Create} />
+        <Route exact path="/admin/edit/:id" component={Edit} />
+        <Route exact path="/admin/delete/:id" component={Delete} />
+
         <Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />
 				<Route path="/logout" component={Logout} />
