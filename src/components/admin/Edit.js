@@ -37,6 +37,7 @@ const Edit = () => {
 		slug: '',
 		excerpt: '',
 		content: '',
+       
 	});
 
 	const [formData, updateFormData] = useState(initialFormData);
@@ -49,12 +50,14 @@ const Edit = () => {
 				['excerpt']: res.data.excerpt,
 				['slug']: res.data.slug,
 				['content']: res.data.content,
+               
 			});
-			console.log(res.data);
+			console.log(res);
 		});
 	}, [updateFormData]);
 
     const handleChange = (e) => {
+       
 		updateFormData({
 			...formData,
 			// Trimming any whitespace
@@ -146,6 +149,7 @@ const Edit = () => {
                             rows={8}
                         />
                     </Grid>
+                  
                 </Grid>
                 <Button
                     type="submit"
